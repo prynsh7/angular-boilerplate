@@ -2,7 +2,7 @@
 import { first } from 'rxjs/operators';
 
 import { User } from '@/_models';
-import { UserService, AuthenticationService } from '@/_services';
+import { UserService, AuthenticationService, FlightServices } from '@/_services';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
@@ -11,7 +11,9 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
+        private flightService: FlightServices
+
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
@@ -27,8 +29,10 @@ export class HomeComponent implements OnInit {
     }
 
     private loadAllUsers() {
-        this.userService.getAll()
-            .pipe(first())
-            .subscribe(users => this.users = users);
+        this.users = localStorage.getItem("bookflight") ? JSON.parse(localStorage.getItem("bookflight")) : []
+    //     this.flightService.getAll()
+    //         .pipe(first())
+    //         .subscribe(users => this.users = users);
+    // }
     }
 }

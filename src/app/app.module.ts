@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+import { FlightComponent } from './flight';
+import { FormsModule } from '@angular/forms';
+
 import { AlertComponent } from './_components';
 
 @NgModule({
@@ -19,13 +22,15 @@ import { AlertComponent } from './_components';
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
+        FormsModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+        FlightComponent,
         AlertComponent
     ],
     providers: [
